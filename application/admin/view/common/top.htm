@@ -1,0 +1,90 @@
+<div class="navbar">
+<div class="navbar-inner">
+    <div class="navbar-container">
+        <!-- Navbar Barnd -->
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <span style="padding:10px;">{$configs.shop_name}后台管理</span>
+                </small>
+            </a>
+        </div>
+        <!-- /Navbar Barnd -->
+        <!-- Sidebar Collapse -->
+        <div class="sidebar-collapse" id="sidebar-collapse">
+            <i class="collapse-icon fa fa-bars"></i>
+        </div>
+        <!-- /Sidebar Collapse -->
+        <!-- Account Area and Settings -->
+        <div class="navbar-header pull-right" >
+            <div class="navbar-account">
+                <ul class="account-area" style="margin-right:50px;">
+                    <li>
+                        <a href="{:url('index/Index/index')}" id="clearCache" class="login-area dropdown-toggle">
+                            <section>
+                                <h2><span class="profile"><span>
+                                <i class="menu-icon fa fa-home">&nbsp;</i>
+                                商城前台
+                                </span></span></h2>
+                            </section>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('Index/clearCache')}" id="clearCache" class="login-area dropdown-toggle">
+                            <section>
+                                <h2><span class="profile"><span>
+                                <i class="menu-icon fa fa-trash-o">&nbsp;</i>
+                                清空缓存
+                                </span></span></h2>
+                            </section>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                            <div class="avatar">
+                                <img src="__uploads__/conf/{$configs.admin_photo}">
+                            </div>
+                            <section>
+                                <h2><span class="profile"><span>{$Request.session.useradmin}</span></span></h2>
+                            </section>
+                        </a>
+                      
+                    </li>
+                    <li>
+                     <a href="{:url('Login/logout')}" id="clearCache" class="login-area dropdown-toggle">
+                        <section>
+                            <h2><span class="profile"><span>
+                            <i class="menu-icon fa fa-power-off">&nbsp;</i>
+                            退出
+                            </span></span></h2>
+                        </section>
+                        </a>
+                    </li>
+                    <!-- Settings -->
+                </ul>
+            </div>
+        </div>
+        <!-- /Account Area and Settings -->
+    </div>
+</div>
+</div>
+<!-- <script type="text/javascript">
+public function clearCache(){
+    if(!confirm('确定要清除缓存？')){
+        return false;
+    }
+    var url = "{:url('Index/clearCache')}";
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'json',
+        success:function(data){
+            if(data == 1){
+                alert('清除缓存成功！');
+            }else{
+                alert('失败！');
+            }
+        }
+    });
+}
+</script> -->

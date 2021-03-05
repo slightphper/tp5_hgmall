@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    <style type="text/css">
+    .select1{
+      /*  -webkit-appearance:none;
+        -moz-appearance:none;*/
+        height: 30px;
+        border: none;
+        color: #6d6d6d;
+    }
+    </style>
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+		    <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                     <li>
+                        <a href="{:url('Index/index')}">系统</a>
+                    </li>
+                    <li>
+                        <a href="{:url('Goods/lst')}">商品列表</a>
+                    </li>
+                      <li class="active">商品库存</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加商品类型" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Goods/add')}'"> <i class="fa fa-plus"></i> 新增商品
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+            <form action="" method="post">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">商品名称</th>
+                                {volist name="radioAttrRes" id="radioAttr"}
+                                <th class="text-center" width="10%">{$key}</th> 
+                                {/volist}
+                                <th class="text-center" width="30%">库存量</th>
+                                <th class="text-center" width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 已设置库存 -->
+                              <?php if($goodsProRes):
+                                  foreach($goodsProRes as $k0=>$v0):
+                              ?>
+                                <tr>
+                                <td align="center">{$goodsName['goods_name']}</td>
+                                 <?php foreach($radioAttrRes as $k=>$v):?>
+
+                                    <td align="center">
+                                        <select name="goods_attr[{$k}][]" class="select1">
+                                            <option value="">请选择</option>
+                                            <?php foreach($v as $k1=>$v1):
+                                                $arr = explode(',',$v0['goods_attr']);
+                                                if(in_array($v1['id'],$arr)){
+                                                    $select = 'selected = selected';
+                                                }else{
+                                                    $select = '';
+                                                }
+                                            ?>
+                                            <option <?php echo $select;?> value="<?php echo $v1['id']?>"><?php echo $v1['attr_value']?></option>
+                                        <?php endforeach;?>
+                                        </select>
+                                    </td>
+                                    <?php endforeach;?>
+
+                                    <td align="center"><input type="text" name="goods_num[]" value="<?php echo $v0['goods_number']?>" style="text-align:center;"></td>
+                                    <td align="center">
+                                         <a href="javascript:;" onclick="addNum(this)" class="btn btn-azure btn-sm shiny" {if condition="$radioAttrRes eq null "} disabled="disabled" {/if}><?php if($k0 == 0){echo '+';}else{echo '-';}?></a>
+                                    </td>
+                                 </tr>
+                              <?php endforeach; else:?>
+                              <!-- 未设置库存 -->
+                              <tr>
+                              <td align="center">{$goodsName['goods_name']}</td>
+                                <?php foreach($radioAttrRes as $k=>$v):?>
+                                <td align="center">
+                                    <select name="goods_attr[{$k}][]" class="select1">
+                                        <option value="">请选择</option>
+                                        <?php foreach($v as $k1=>$v1):?>
+                                        <option value="<?php echo $v1['id']?>"><?php echo $v1['attr_value']?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </td>
+                                <?php endforeach;?>
+
+                                <td align="center"><input type="text" name="goods_num[]"></td>
+                                <td align="center">
+                                     <a href="javascript:;" onclick="addNum(this)" class="btn btn-azure btn-sm shiny" {if condition="$radioAttrRes eq null "} disabled="disabled" {/if} >+</a>
+                                </td>
+                            </tr>
+                            <?php endif;?>                       
+                      </tbody>
+                    </table>
+                    <div style="padding-top:10px;text-align:right;">
+                  
+                    </div>
+                </div>
+                <div style="height:30px;margin-left:915px">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="formbtn" type="submit" class="btn btn-default">保存信息</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    <script type="text/javascript">
+        function addNum(o){
+            var div = $(o).parent().parent();
+            if($(o).html() == '+'){
+                var newdiv = div.clone();
+                newdiv.find('a').html('-');
+                div.after(newdiv);
+            }else{
+                div.remove();
+            }
+        }
+    </script>
+
+
+</body></html>

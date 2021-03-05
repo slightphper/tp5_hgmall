@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+    {include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                         <li>
+                            <a href="{:url('Index/index')}">系统</a>
+                         </li>
+                          <li>
+                            <a href="{:url('Order/lst')}">订单管理</a>
+                        </li>
+                         <li>
+                            <a href="{:url('Order/orderGoods',array('id'=>$orderGoodsInfo['order_id']))}">订单商品</a>
+                        </li>
+                        <li class="active">修改商品</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">            
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">修改订单商品</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post">
+                        <input type="hidden" name="id" value="{$orderGoodsInfo.id}">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">商品名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" name="goods_name" value="{$orderGoodsInfo.goods_name}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">购买价格</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" value="{$orderGoodsInfo.member_price}" name="member_price" type="text">
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">商品属性</label>
+                            <div class="col-sm-6">
+                                <!-- <input class="form-control" value="{$orderGoodsInfo.goods_attr_str}" name="goods_attr_str" type="text"> -->
+                                <textarea class="form-control" name="goods_attr_str" >{$orderGoodsInfo.goods_attr_str}</textarea>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">购买数量</label>
+                            <div class="col-sm-6">
+                               <input class="form-control" value="{$orderGoodsInfo.goods_num}" name="goods_num" type="text">
+                            </div>
+                        </div>
+
+                          <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">总价</label>
+                            <div class="col-sm-6">
+                               <input class="form-control" value="{$orderGoodsInfo.total_price}" name="total_price" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" onClick="orderGoodsEdit()" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+<!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__admin__/style/beyond.js"></script>
+<script type="text/javascript">
+function orderGoodsEdit(){
+    var url = "{:url('Order/orderGoodsEdit',array('id'=>$orderGoodsInfo['id']))}";
+    var jump = "{:url('Order/orderGoods',array('id'=>$orderGoodsInfo['order_id']))}";
+    var order_goods_id = $("[name='id']").val(); 
+    var goods_name = $("[name='goods_name']").val();
+    var member_price = $("[name='member_price']").val();
+    var goods_attr_str = $("[name='goods_attr_str']").val();
+    var goods_num = $("[name='goods_num']").val();
+    var total_price = $("[name='total_price']").val();
+    if(goods_name=='' || member_price=='' || goods_attr_str=='' || goods_num=='' || total_price==''){
+        alert('修改失败！请检查是否填写完整。');
+     }else{
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {id:order_goods_id,goods_name:goods_name,member_price:member_price,goods_attr_str:goods_attr_str,goods_num:goods_num,total_price:total_price},
+            success:function(data){
+                if(data == 1){
+                    location.href = jump;
+                }else{
+                    alert('修改失败！请检查是否填写完整。');
+                }
+            }
+        });
+    }
+
+}
+</script>
+
+
+</body></html>

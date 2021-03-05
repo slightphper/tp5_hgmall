@@ -1,0 +1,338 @@
+<div class="page-sidebar" id="sidebar">
+            <!-- Page Sidebar Header-->
+            <div class="sidebar-header-wrapper">
+                <input class="searchinput" type="text">
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+            </div>
+            <!-- /Page Sidebar Header -->
+            <!-- Sidebar Menu -->
+            <ul class="nav sidebar-menu">
+                <!--Dashboard-->                       
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-shopping-cart"></i>
+                        <span class="menu-text">商品管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('Goods/lst')}">
+                                <span class="menu-text">商品列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Goods/add')}">
+                                <span class="menu-text">添加商品</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Brand/lst')}">
+                                <span class="menu-text">商品品牌</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Category/lst')}">
+                                <span class="menu-text">商品分类</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Type/lst')}">
+                                <span class="menu-text">商品类型</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">商品回收站</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>  
+
+                <!-- 促销管理 -->
+                <!--  <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-money"></i>
+                        <span class="menu-text">促销管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">团购活动</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">积分商城</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">优惠券</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>  -->
+                <!-- 订单管理 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-legal"></i>
+                        <span class="menu-text">订单管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('Order/lst')}">
+                                <span class="menu-text">订单列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Order/orderSelect')}">
+                                <span class="menu-text">订单查询</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>  
+                <!-- 会员管理 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-users"></i>
+                        <span class="menu-text">会员管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('User/lst')}">
+                                <span class="menu-text">会员列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('MemberLevel/lst')}">
+                                <span class="menu-text">会员等级</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">会员留言</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>
+
+                
+                <!-- 前台推荐位 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-thumbs-up"></i>
+                        <span class="menu-text">首页推荐位</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('RecPos/lst')}">
+                                <span class="menu-text">首页推荐位管理</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('RecPos/add')}">
+                                <span class="menu-text">添加推荐</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('CategoryRec/lst')}">
+                                <span class="menu-text">分类推荐--精选分类</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('BrandRec/lst')}">
+                                <span class="menu-text">分类推荐--品牌列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                          <li>
+                            <a href="{:url('CategoryAdv/lst')}">
+                                <span class="menu-text">首页推荐分类--左侧广告位</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li> 
+                  <!-- 导航管理 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-location-arrow"></i>
+                        <span class="menu-text">页面导航</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('Nav/lst')}">
+                                <span class="menu-text">导航列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Nav/add')}">
+                                <span class="menu-text">添加导航</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         
+                    </ul>                            
+                </li>
+              
+                <!-- 短信管理 -->
+               <!--   <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-envelope"></i>
+                        <span class="menu-text">短信管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">发送信息</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">短信签名</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>    -->
+                 <!-- 底部信息 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-file-text"></i>
+                        <span class="menu-text">底部信息栏</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('cate/lst')}">
+                                <span class="menu-text">信息分类</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('article/lst')}">
+                                <span class="menu-text">文章管理</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>        
+                 <!-- 图片管理 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-picture-o"></i>
+                        <span class="menu-text">图片管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{:url('AlternateImg/lst')}">
+                                <span class="menu-text">首页轮播图列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Article/imgMange')}">
+                                <span class="menu-text">文章内图片列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>        
+                 <!-- 数据库管理 -->
+                <!--  <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-sitemap"></i>
+                        <span class="menu-text">数据库管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">数据库备份</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">数据表优化</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>     -->
+                  <!-- 系统设置 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-gear"></i>
+                        <span class="menu-text">系统设置</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('Conf/conflist')}">
+                                <span class="menu-text">配置项</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="{:url('Conf/lst')}">
+                                <span class="menu-text">配置管理</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                                <span class="menu-text">支付方式设置</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    </ul>                            
+                </li>   
+                <!-- 友情链接 -->
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-link"></i>
+                        <span class="menu-text">友情链接</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                         <li>
+                            <a href="{:url('Link/lst')}">
+                                <span class="menu-text">链接列表</span>
+                                <i class="menu-expand"></i>
+                            </a>
+                         </li>
+                    
+                    </ul>                            
+                </li>                                                       
+                                                          
+            </ul>
+            <!-- /Sidebar Menu -->
+        </div>

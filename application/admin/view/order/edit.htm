@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+    <!-- 头部 -->
+    {include file="common/top"}
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                         <li>
+                            <a href="{:url('Index/index')}">系统</a>
+                         </li>
+                         <li>
+                            <a href="{:url('Order/lst')}">订单管理</a>
+                        </li>
+                        <li class="active">订单详情</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+             <form action="">
+                <table class="table table-hover">
+                    <thead class="bordered-darkorange">
+                        <tr>
+                            <th width="15%" style="text-align:right;">
+                                订单详细信息
+                            </th>
+                            <th>
+                                订单内容
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:right;">
+                                订单ID:
+                            </td>
+                            <td>
+                                {$orderInfo.id}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                订单编号:
+                            </td>
+                            <td>
+                                {$orderInfo.out_trade_no}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:right;">
+                                下单时间:
+                            </td>
+                            <td>
+                                {$orderInfo.order_time|date="Y-m-d H:i:s",###}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                下单用户:
+                            </td>
+                            <td>
+                                {$orderInfo.username}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                商品总额:
+                            </td>
+                            <td>
+                                <input type="text" name="goods_total_price" value="{$orderInfo.goods_total_price} "> 元
+                                
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                运费:
+                            </td>
+                            <td>
+                                <input type="text" name="post_spent" value="{$orderInfo.post_spent} "> 元
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                订单总额:
+                            </td>
+                            <td>
+                                <input type="text" name="order_total_price" value="{$orderInfo.order_total_price} "> 元
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                支付状态:
+                            </td>
+                            <td>
+                                {if condition="$orderInfo['pay_status'] eq 0"}未支付{else/}已支付{/if}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                支付方式:
+                            </td>
+                            <td>
+                                {if condition="$orderInfo['payment'] eq 1"}支付宝{else/}微信{/if}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                配送方式:
+                            </td>
+                            <td>
+                            <select name="distribution" id="">
+                                <option {if condition="$orderInfo['distribution'] eq '顺丰'"} selected="selected" {/if} value="顺丰">顺丰</option>
+                                <option {if condition="$orderInfo['distribution'] eq '邮政'"} selected="selected" {/if} value="邮政">邮政</option>
+                            </select>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                配送状态:
+                            </td>
+                            <td>
+                                {if condition="$orderInfo['post_status'] eq 0"}未发货
+                                    {elseif condition="$orderInfo['post_status'] eq 1"/}已发货
+                                    {elseif condition="$orderInfo['post_status'] eq 2"/}已签收
+                                {/if}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                收货人姓名:
+                            </td>
+                            <td>
+                                <input type="text" name="name" value="{$orderInfo.name}" >
+                            </td>
+                        </tr>
+
+                         <tr>
+                            <td style="text-align:right;">
+                                收货人电话:
+                            </td>
+                            <td>
+                             <input type="text" name="mobile_phone" value="{$orderInfo.mobile_phone} ">
+                            </td>
+                        </tr>
+                       <tr>
+                            <td style="text-align:right;">
+                                地址:
+                            </td>
+                            <td>
+                            <input type="text" name="province" value="{$orderInfo.province} ">
+                            <input type="text" name="city" value="{$orderInfo.city} ">
+                            <input type="text" name="district" value="{$orderInfo.district} ">
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align:right;">
+                                详细地址:
+                            </td>
+                            <td>
+                            <input type="text" name="address" value="{$orderInfo.address}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:right;">
+                                订单商品:
+                            </td>
+                            <td>
+                                商品列表
+                            </td>
+                        </tr>
+
+                        <tr>
+                           <td style="text-align:right;">
+                            </td>
+                            <td>
+                                <div>
+                                <button type="submit" onClick="orderEdit()" class="btn btn-default">保存修改</button>
+                            </div>
+                            </td>
+                        </tr>
+                      
+                    </tbody>
+                </table>
+               </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+
+<!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<script src="__admin__/style/beyond.js"></script>
+<script type="text/javascript">
+function orderEdit(){
+
+    if($("[name='name']").val() == '' || $("[name='goods_total_price']").val() == '' || $("[name='order_total_price']").val() == '' || $("[name='mobile_phone']").val() == '' ||$("[name='address']").val() == ''){
+        alert('表单内容不能存在空字段，请检查后提交！');
+    }else{
+
+        var url = "{:url('edit')}";
+        var jump = "{:url('detail',array('id'=>$orderInfo.id))}"; 
+        var order_id = "{$orderInfo.id}";
+        var goods_total_price = $("[name='goods_total_price']").val();
+        var post_spent = $("[name='post_spent']").val();
+        var order_total_price = $("[name='order_total_price']").val();
+        var name = $("[name='name']").val();
+        var mobile_phone = $("[name='mobile_phone']").val();
+        var province = $("[name='province']").val();
+        var city = $("[name='city']").val();
+        var district = $("[name='district']").val();
+        var distribution = $("[name='distribution']").select().val();
+        var address = $("[name='address']").val();
+        $.ajax({
+            type: "POST",
+            url: url,
+            dateType: "json",
+            data:{id:order_id,goods_total_price:goods_total_price,post_spent:post_spent,order_total_price:order_total_price,name:name,mobile_phone:mobile_phone,province:province,city:city,district:district,distribution,distribution,address:address},
+            success:function(data){
+                if(data == 1){
+                    location.href = jump;
+                }else{
+                    alert('修改失败！');
+                }
+            }
+        });
+    }
+}
+
+
+</script>
+    
+
+</body></html>

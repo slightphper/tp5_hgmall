@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+		    <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                     <li>
+                        <a href="{:url('Index/index')}">系统</a>
+                    </li>
+                      <li class="active">商品管理</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+<form action="" method="POST">         
+<button type="button" tooltip="添加商品类型" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Goods/add')}'"> <i class="fa fa-plus"></i> 新增商品
+</button>
+<!-- 分类筛选 -->
+<select class="btn btn-sm" style="margin-left:20px;" name="cate" id="ajaxCate">
+    <option value="0">显示全部</option>
+    {volist name="categoryRes" id="cates"}
+    <option value="{$cates.id}"><?php echo str_repeat('--',$cates['level']*2);?>{$cates.cate_name}</option>
+    {/volist}
+</select>
+<button style="margin-left:10px;" onClick="ajaxCate()" type="submit" class="btn btn-sm  btn-addon"> <i class="fa fa-"></i> 搜索
+</button>
+</form>  
+<script type="text/javascript">
+// function ajaxCate(){
+//     var url = "{:url('Goods/lst')}";
+//     var cateId = $("#ajaxCate").select().val();
+//     // alert(cateId);
+//     $.ajax({
+//         url: url,
+//         type: "POST",
+//         data: {cateId:cateId},
+//         success:function(data){
+            
+//         }
+//     });
+// }
+
+</script>
+
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="5%">ID</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center" width="10%">商品编号</th>
+                                <!-- <th class="text-center" width="10%">缩略图</th> -->
+                                <th class="text-center" width="7%">市场价</th>
+                                <th class="text-center" width="7%">本店价</th>
+                                <th class="text-center" width="8%">分类</th>
+                                <th class="text-center" width="8%">类型</th>
+                                <th class="text-center" width="8%">品牌</th>
+                                <th class="text-center" width="6%">库存量</th>
+                                <th class="text-center" width="5%">上架</th>
+                                <th class="text-center" width="22%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              {volist name="goodsRes" id="goods"}
+                              <tr>
+                                <td align="center">{$goods.id}</td>
+                                <td align="center">{$goods.goods_name|cut_str=###,13}</td>
+                                <td align="center">{$goods.goods_code}</td>
+                                <!-- <td align="center">
+                                {if condition="$goods['sm_thumb'] neq ''"/}
+                                <img src="__uploads__/{$goods.sm_thumb}" height="30">
+                                {else/}暂无商品图
+                                {/if}
+                                </td> -->
+                                <td align="center">{$goods.markte_price}</td>
+                                <td align="center">{$goods.shop_price}</td>
+                                <td align="center">{$goods.cate_name}</td>
+                                <td align="center">{if condition="$goods['type_name'] neq ''" /}
+                                {$goods.type_name}
+                                {else/}未设置{/if}
+                                </td>
+                                <td align="center">{if condition="$goods['brand_name'] neq ''" /}
+                                {$goods.brand_name}
+                                {else/}未设置{/if}
+                                </td>
+                                <td align="center">{if condition="$goods['gn']"/}{$goods.gn}件{else/}0件{/if}</td>
+                                <td align="center">
+                                {if condition="$goods['on_sale'] eq 1"/}
+                                <img src="__admin__/images/right.png" height="20">
+                                {else/}
+                                <img src="__admin__/images/wrong.png" height="20">
+                                {/if}</td>
+                                <td align="center">
+                                    <a href="{:url('Goods/product',array('id'=>$goods['id']))}" class="btn btn-darkorange btn-sm shiny">
+                                        <i class="fa fa-list"></i> 库存量
+                                    </a>
+                                    <a href="{:url('Goods/edit',array('id'=>$goods['id']))}" class="btn btn-azure btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('Goods/del',array('id'=>$goods['id']))}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            {/volist}                           
+                      </tbody>
+                    </table>
+                    <div style="padding-top:10px;text-align:right;">
+                    {$goodsRes->render()}
+                    </div>
+                </div>
+                <div>
+                                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    
+
+
+</body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+<!-- 头部 -->
+{include file="common/top"}
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+	<div class="page-container">
+    <!-- Page Sidebar -->
+    {include file="common/left"}
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+             <li>
+                <a href="{:url('Index/index')}">系统</a>
+            </li>
+              <li class="active">订单管理</li>
+            </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
+<div class="page-body">
+<div>             
+<button type="button" tooltip="订单查询" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Order/orderSelect')}'">
+ <i class="fa fa-plus"></i> 订单查询
+</button>
+<button type="button" tooltip="全部订单" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Order/lst')}'">
+ <i class="fa fa-plus"></i> 全部订单
+</button>
+<button type="button" tooltip="已支付" class="btn btn-sm btn-palegreen btn-addon" onClick="javascript:window.location.href = '{:url('Order/lst')}?status=paied'">
+ <i class="fa fa-plus"></i> 已支付
+</button>
+<button type="button" tooltip="未支付" class="btn btn-sm btn-darkorange btn-addon" onClick="javascript:window.location.href = '{:url('Order/lst')}?status=no_paied'"> 
+<i class="fa fa-plus"></i> 未支付
+</button>
+<button type="button" tooltip="已发货" class="btn btn-sm btn-blue btn-addon" onClick="javascript:window.location.href = '{:url('Order/lst')}?status=posted'">
+ <i class="fa fa-plus"></i> 已发货
+</button>
+<button type="button" tooltip="未发货" class="btn btn-sm btn-darkorange btn-addon" onClick="javascript:window.location.href = '{:url('Order/lst')}?status=no_posted'">
+ <i class="fa fa-plus"></i> 未发货
+</button>
+<button type="button" tooltip="已签收" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Order/lst')}?status=receive'">
+ <i class="fa fa-plus"></i> 已签收
+</button>
+<button type="button" style="margin-left:440px;height:30px;" class="btn btn-sm btn-danger btn-addon" onClick="javascript:window.location.href = '{:url('Order/exportOrders')}?status={$orderStatus}'">
+ <i class="glyphicon glyphicon-retweet"></i> 导出订单
+</button>
+
+</div>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="5%">ID</th>
+                                <th class="text-center" width="8%">订单号</th>
+                                <th class="text-center">订单总价</th>
+                                <th class="text-center">支付状态</th>
+                                <th class="text-center">订单状态</th>
+                                <th class="text-center">发货状态</th>
+                                <th class="text-center">配送方式</th>
+                                <!-- <th class="text-center">支付方式</th> -->
+                                <th class="text-center">下单用户</th>
+                                <!-- <th class="text-center" width="8%">收货人</th> -->
+                                <!-- <th class="text-center" width="8%">联系电话</th> -->
+                                <th class="text-center" width="8%">下单时间</th>
+                                <th class="text-center" width="32%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              {volist name="orderRes" id="order"}
+                              <tr>
+                                <td align="center">{$order.id}</td>
+                                <td align="center">{$order.out_trade_no}</td>
+                                <td align="center">{$order.order_total_price}元</td>
+                                <td align="center">
+                                   {if condition="$order['pay_status'] eq 0"}未支付{else/}已支付{/if} 
+                                </td>
+                                <td align="center">
+                                    {if condition="$order['order_status'] eq 0"}未确认{else/}已确认{/if}
+                                </td>
+                                <td align="center">
+                                    {if condition="$order['post_status'] eq 0"}未发货
+                                    {elseif condition="$order['post_status'] eq 1"/}已发货
+                                    {elseif condition="$order['post_status'] eq 2"/}已签收
+                                    {/if}
+                                </td>
+                                <td align="center">{$order.distribution}</td>
+                               <!--  <td align="center">
+                                    {if condition="$order['payment'] eq 1"}支付宝{else/}微信{/if}
+                                </td> -->
+                                <td align="center">{$order.username}</td>
+                                <!-- <td align="center">{$order.name}</td> -->
+                                <!-- <td align="center">{$order.mobile_phone}</td> -->
+                                <td align="center">{$order.order_time|date="Y-m-d H:i",###}</td>
+                              
+                                <td align="center">
+                                     <a href="{:url('Order/orderGoods',array('id'=>$order['id']))}" class="btn btn-palegreen btn-sm shiny">
+                                        <i class="fa fa-shopping-cart"></i> 订单商品
+                                    </a>
+                                    <a href="{:url('Order/detail',array('id'=>$order['id']))}" class="btn btn-darkorange btn-sm shiny">
+                                        <i class="fa fa-list"></i> 订单详情
+                                    </a>
+                                    <a href="{:url('order/edit',array('id'=>$order['id']))}" class="btn btn-azure btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="del(this)" id="{$order.id}" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            {/volist}                           
+                      </tbody>
+                    </table>
+                    <div style="padding-top:10px;text-align:right;">
+                        {$orderRes->render()}
+                    </div>
+                </div>
+                <div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+    <!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__admin__/style/beyond.js"></script>
+<script type="text/javascript">
+function del(obj){
+    if(!confirm('确定要删除该订单及其关联订单商品？')){
+        return false;
+    }
+    var url = "{:url('order/del')}";
+    var order_id = $(obj).attr('id');
+    $.ajax({
+        type: "POST",
+        dateType: "json",
+        url: url,
+        data: {id:order_id},
+        success:function(data){
+            if(data == 1){
+                $(obj).parent().parent().remove();
+            }else{
+                alert("订单删除失败！");
+            }
+        }
+    });
+}
+</script>
+
+
+</body></html>

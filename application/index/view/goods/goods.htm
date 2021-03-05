@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$configs.shop_keywords}" />
+<meta name="Description" content="{$configs.shop_desc}" />
+<title>{$goodsInfo.goods_name}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="__index__/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__index__/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__index__/css/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__index__/css/purebox.css" />
+<link rel="stylesheet" type="text/css" href="__index__/css/quickLinks.css" />
+<script type="text/javascript" src="__index__/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__index__/js/jquery.json.js"></script>
+<script type="text/javascript" src="__index__/js/transport_jquery.js"></script>
+<script type="text/javascript">
+var json_languages = {"ok":"\u786e\u5b9a","determine":"\u786e\u5b9a","cancel":"\u53d6\u6d88","drop":"\u5220\u9664","edit":"\u7f16\u8f91","remove":"\u79fb\u9664","follow":"\u5173\u6ce8","pb_title":"\u63d0\u793a","Prompt_information":"\u63d0\u793a\u4fe1\u606f","title":"\u63d0\u793a","not_login":"\u60a8\u5c1a\u672a\u767b\u5f55","close":"\u5173\u95ed","cart":"\u8d2d\u7269\u8f66","js_cart":"\u8d2d\u7269\u8f66","all":"\u5168\u90e8","go_login":"\u53bb\u767b\u9646","select_city":"\u8bf7\u9009\u62e9\u5e02","comment_goods":"\u8bc4\u8bba\u5546\u54c1","submit_order":"\u63d0\u4ea4\u8ba2\u5355","sys_msg":"\u7cfb\u7edf\u63d0\u793a","no_keywords":"\u8bf7\u8f93\u5165\u641c\u7d22\u5173\u952e\u8bcd\uff01","adv_packup_one":"\u8bf7\u53bb\u540e\u53f0\u5e7f\u544a\u4f4d\u7f6e","adv_packup_two":"\u91cc\u9762\u8bbe\u7f6e\u5e7f\u544a\uff01","more":"\u66f4\u591a","Please":"\u8bf7\u53bb","set_up":"\u8bbe\u7f6e\uff01","login_phone_packup_one":"\u8bf7\u8f93\u5165\u624b\u673a\u53f7\u7801","more_options":"\u66f4\u591a\u9009\u9879","Pack_up":"\u6536\u8d77","no_attr":"\u6ca1\u6709\u66f4\u591a\u5c5e\u6027\u4e86","search_Prompt":"\u53ef\u8f93\u5165\u6c49\u5b57,\u62fc\u97f3\u67e5\u627e\u54c1\u724c","most_input":"\u6700\u591a\u53ea\u80fd\u9009\u62e95\u9879","multi_select":"\u591a\u9009","checkbox_Packup":"\u8bf7\u6536\u8d77\u5168\u90e8\u591a\u9009","radio_Packup":"\u8bf7\u6536\u8d77\u5168\u90e8\u5355\u9009","contrast":"\u5bf9\u6bd4","empty_contrast":"\u6e05\u7a7a\u5bf9\u6bd4\u680f","Prompt_add_one":"\u6700\u591a\u53ea\u80fd\u6dfb\u52a04\u4e2a\u54e6^_^","Prompt_add_two":"\u60a8\u8fd8\u53ef\u4ee5\u7ee7\u7eed\u6dfb\u52a0","button_compare":"\u6bd4\u8f83\u9009\u5b9a\u5546\u54c1","exist":"\u60a8\u5df2\u7ecf\u9009\u62e9\u4e86%s","count_limit":"\u6700\u591a\u53ea\u80fd\u9009\u62e94\u4e2a\u5546\u54c1\u8fdb\u884c\u5bf9\u6bd4","goods_type_different":"%s\u548c\u5df2\u9009\u62e9\u5546\u54c1\u7c7b\u578b\u4e0d\u540c\u65e0\u6cd5\u8fdb\u884c\u5bf9\u6bd4","compare_no_goods":"\u60a8\u6ca1\u6709\u9009\u5b9a\u4efb\u4f55\u9700\u8981\u6bd4\u8f83\u7684\u5546\u54c1\u6216\u8005\u6bd4\u8f83\u7684\u5546\u54c1\u6570\u5c11\u4e8e 2 \u4e2a\u3002","btn_buy":"\u8d2d\u4e70","is_cancel":"\u53d6\u6d88","select_spe":"\u8bf7\u9009\u62e9\u5546\u54c1\u5c5e\u6027","Province":"\u8bf7\u9009\u62e9\u6240\u5728\u7701\u4efd","City":"\u8bf7\u9009\u62e9\u6240\u5728\u5e02","District":"\u8bf7\u9009\u62e9\u6240\u5728\u533a\u57df","Street":"\u8bf7\u9009\u62e9\u6240\u5728\u8857\u9053","Detailed_address_null":"\u8be6\u7ec6\u5730\u5740\u4e0d\u80fd\u4e3a\u7a7a","Select_attr":"\u8bf7\u9009\u62e9\u5c5e\u6027","Focus_prompt_one":"\u60a8\u5df2\u5173\u6ce8\u8be5\u5e97\u94fa\uff01","Focus_prompt_login":"\u60a8\u5c1a\u672a\u767b\u5f55\u5546\u57ce\u4f1a\u5458\uff0c\u4e0d\u80fd\u5173\u6ce8\uff01","Focus_prompt_two":"\u767b\u5f55\u5546\u57ce\u4f1a\u5458\u3002","store_focus":"\u5e97\u94fa\u5173\u6ce8\u3002","Focus_prompt_three":"\u60a8\u786e\u5b9e\u8981\u5173\u6ce8\u6240\u9009\u5e97\u94fa\u5417\uff1f","Focus_prompt_four":"\u60a8\u786e\u5b9e\u8981\u53d6\u6d88\u5173\u6ce8\u5e97\u94fa\u5417\uff1f","Focus_prompt_five":"\u60a8\u8981\u5173\u6ce8\u8be5\u5e97\u94fa\u5417\uff1f","Purchase_quantity":"\u8d85\u8fc7\u9650\u8d2d\u6570\u91cf.","My_collection":"\u6211\u7684\u6536\u85cf","shiping_prompt":"\u8be5\u5730\u533a\u6682\u4e0d\u652f\u6301\u914d\u9001","Have_goods":"\u6709\u8d27","No_goods":"\u65e0\u8d27","No_shipping":"\u65e0\u6cd5\u914d\u9001","Deliver_back_order":"\u4e0b\u5355\u540e\u7acb\u5373\u53d1\u8d27","Time_delivery":" \u65f6\u53d1\u8d27","goods_over":"\u6b64\u5546\u54c1\u6682\u65f6\u552e\u5b8c","Stock_goods_null":"\u5546\u54c1\u5e93\u5b58\u4e0d\u8db3","purchasing_prompt_two":"\u5bf9\u4e0d\u8d77\uff0c\u8be5\u5546\u54c1\u5df2\u7ecf\u7d2f\u8ba1\u8d85\u8fc7\u9650\u8d2d\u6570\u91cf","day_not_available":"\u5f53\u65e5\u65e0\u8d27","day_yes_available":"\u5f53\u65e5\u6709\u8d27","Already_buy":"\u5df2\u8d2d\u4e70","Already_buy_two":"\u4ef6\u5546\u54c1\u8fbe\u5230\u9650\u8d2d\u6761\u4ef6,\u65e0\u6cd5\u518d\u8d2d\u4e70","Already_buy_three":"\u4ef6\u8be5\u5546\u54c1,\u53ea\u80fd\u518d\u8d2d\u4e70","goods_buy_empty_p":"\u5546\u54c1\u6570\u91cf\u4e0d\u80fd\u5c11\u4e8e1\u4ef6","goods_number_p":"\u5546\u54c1\u6570\u91cf\u5fc5\u987b\u4e3a\u6570\u5b57","search_one":"\u8bf7\u586b\u5199\u7b5b\u9009\u4ef7\u683c","search_two":"\u8bf7\u586b\u5199\u7b5b\u9009\u5de6\u8fb9\u4ef7\u683c","search_three":"\u8bf7\u586b\u5199\u7b5b\u9009\u53f3\u8fb9\u4ef7\u683c","search_four":"\u5de6\u8fb9\u4ef7\u683c\u4e0d\u80fd\u5927\u4e8e\u6216\u7b49\u4e8e\u53f3\u8fb9\u4ef7\u683c","jian":"\u4ef6","letter":"\u4ef6","inventory":"\u5b58\u8d27","move_collection":"\u79fb\u81f3\u6211\u7684\u6536\u85cf","select_shop":"\u8bf7\u9009\u62e9\u5957\u9910\u5546\u54c1","Parameter_error":"\u53c2\u6570\u9519\u8bef","screen_price":"\u8bf7\u586b\u5199\u7b5b\u9009\u4ef7\u683c","screen_price_left":"\u8bf7\u586b\u5199\u7b5b\u9009\u5de6\u8fb9\u4ef7\u683c","screen_price_right":"\u8bf7\u586b\u5199\u7b5b\u9009\u53f3\u8fb9\u4ef7\u683c","screen_price_dy":"\u5de6\u8fb9\u4ef7\u683c\u4e0d\u80fd\u5927\u4e8e\u6216\u7b49\u4e8e\u53f3\u8fb9\u4ef7\u683c","invoice_ok":"\u4fdd\u5b58\u53d1\u7968\u4fe1\u606f","invoice_desc_null":"\u8f93\u5165\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a\uff01","invoice_desc_number":"\u60a8\u6700\u591a\u53ef\u4ee5\u6dfb\u52a03\u4e2a\u516c\u53f8\u53d1\u7968\uff01","invoice_packup":"\u8bf7\u9009\u62e9\u6216\u586b\u5199\u53d1\u7968\u62ac\u5934\u90e8\u5206\uff01","invoice_tax_null":"\u8bf7\u586b\u5199\u7eb3\u7a0e\u4eba\u8bc6\u522b\u7801","add_address_10":"\u6700\u591a\u53ea\u80fd\u6dfb\u52a010\u4e2a\u6536\u8d27\u5730\u5740","msg_phone_not":"\u624b\u673a\u53f7\u7801\u4e0d\u6b63\u786e","captcha_not":"\u9a8c\u8bc1\u7801\u4e0d\u80fd\u4e3a\u7a7a","captcha_xz":"\u8bf7\u8f93\u51654\u4f4d\u6570\u7684\u9a8c\u8bc1\u7801","captcha_cw":"\u9a8c\u8bc1\u7801\u9519\u8bef","Detailed_map":"\u8be6\u7ec6\u5730\u56fe","email_error":"\u90ae\u7bb1\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","bid_prompt_null":"\u4ef7\u683c\u4e0d\u80fd\u4e3a\u7a7a!","bid_prompt_error":"\u4ef7\u683c\u8f93\u5165\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","mobile_error_goods":"\u624b\u673a\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","null_email_goods":"\u90ae\u7bb1\u4e0d\u80fd\u4e3a\u7a7a","select_store":"\u8bf7\u9009\u62e9\u95e8\u5e97\uff01","Product_spec_prompt":"\u8bf7\u9009\u62e9\u5546\u54c1\u89c4\u683c\u7c7b\u578b","reply_desc_one":"\u56de\u590d\u5e16\u5b50\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","go_shoping":"\u53bb\u8d2d\u7269","highest_price":"\u5df2\u662f\u6700\u9ad8\u4ef7\uff01","lowest_price":"\u5df2\u662f\u6700\u4f4e\u4ef7\uff01","no_history":"\u60a8\u5df2\u6e05\u7a7a\u6700\u8fd1\u6d4f\u89c8\u8fc7\u7684\u5546\u54c1","receive_coupons":"\u9886\u53d6\u4f18\u60e0\u5238","Immediate_use":"\u7acb\u5373\u4f7f\u7528","no_enabled":"\u5173\u95ed","select_stages_number":"\u8bf7\u9009\u62e9\u5206\u671f\u671f\u6570","store_subscribe":"\u9884\u7ea6\u5230\u5e97","submit_subscribe":"\u63d0\u4ea4\u9884\u7ea6","store_lately":"\u9009\u62e9\u79bb\u4f60\u6700\u8fd1\u7684\u95e8\u5e97","see_store":"\u67e5\u770b\u95e8\u5e97","select_base":"\u8bf7\u9009\u62e9\u5957\u9910\u57fa\u672c\u4ef6","data_not_complete":"\u6570\u636e\u683c\u5f0f\u4e0d\u5b8c\u6574","understock":"\u5e93\u5b58\u4e0d\u8db3\uff0c\u8bf7\u9009\u62e9\u5176\u4ed6\u5546\u54c1","store_goods_null":"\u5f88\u62b1\u6b49\uff0c\u8be5\u533a\u57df\u6682\u65e0\u95e8\u5e97\u6709\u8d27\uff0c\u6b63\u52aa\u529b\u8865\u8d27\u4e2d\u2022\u2022\u2022","please_message_input":"\u8bf7\u60a8\u586b\u5199\u7559\u8a00\u4fe1\u606f.","been_evaluated":"\u60a8\u5df2\u8bc4\u4ef7\u8fc7."};
+//加载效果
+var load_cart_info = '<img src="__index__/img/loadGoods.gif" height="108" class="ml100">';
+var load_icon = '<img src="__index__/img/load.gif" width="200" height="200">';
+</script><link rel="stylesheet" type="text/css" href="__index__/css/goods_fitting.css" />
+<link rel="stylesheet" type="text/css" href="__index__/css/suggest.css" />
+<link rel="stylesheet" type="text/css" href="__index__/js/calendar/calendar.min.css" />
+<link rel="stylesheet" type="text/css" href="__index__/js/perfect-scrollbar/perfect-scrollbar.min.css" />
+<script type="text/javascript">
+var ajax_add_to_cart = "{:url('index/Flow/addToCart')}"; //添加到购物车    js:common.js
+var ajax_cart_url = "{:url('index/Flow/flowCart1')}";      //转跳到购物车页面  js:common.js
+
+</script>
+</head>
+<body>
+{include file="common/header"}
+<!-- 面包屑导航开始 -->
+<div class="full-main-n">
+    <div class="w w1200 relative">
+    <div class="crumbs-nav">
+		<div class="crumbs-nav-main clearfix">
+			{volist name="catePosition" id="cateRes"}
+			<div class="crumbs-nav-item">
+				<div class="menu-drop">
+					<div class="trigger bottom">
+						<a href="{:url('index/Category/index',['id'=>$cateRes['id']])}"><span>{$cateRes.cate_name}</span></a>
+					</div> 				
+		        </div>
+					<i class="iconfont icon-right"></i>		
+			</div>	
+			{/volist}
+			<span class="cn-goodsName">{$goodsInfo.goods_name}</span>
+	</div>
+</div>
+        </div>
+    </div>
+<!-- 面包屑导航结束 -->
+<div class="container">
+	<div class="w w1200">
+        <div class="product-info">
+<!-- 商品相册开始 -->
+<div class="preview" if="preview">
+	<div class="gallery_wrap">
+		<a href="__uploads__/goods_thumb/{$goodsInfo.og_thumb}" class="MagicZoomPlus" id="Zoomer" rel="hint-text: ; selectors-effect: false; selectors-class: img-hover; selectors-change: mouseover; zoom-distance: 10;zoom-width: 400; zoom-height: 474;"><img src="__uploads__/goods_thumb/{$goodsInfo.big_thumb}" id="J_prodImg" alt="{$goodsInfo.goods_name}"></a>
+	</div>
+	<div class="spec-list">
+		<a href="javascript:void(0);" class="spec-prev"><i class="iconfont icon-left"></i></a>
+		<div class="spec-items">
+			<ul>
+				<li>
+				<a href="__uploads__/goods_thumb/{$goodsInfo.og_thumb}" rel="zoom-id: Zoomer" rev="__uploads__/goods_thumb/{$goodsInfo.big_thumb}" >
+				<img src="__uploads__/goods_thumb/{$goodsInfo.mid_thumb}" alt="{$goodsInfo.goods_name}" width="58" height="58" />
+				</a>
+				</li>
+				{volist name="goodsPhotoRes" id="mid_photos"}	            	 
+            	<li>
+				<a href="__uploads__/goods_photo/{$mid_photos.og_photo}" rel="zoom-id: Zoomer" rev="__uploads__/goods_photo/{$mid_photos.big_photo}" >
+				<img src="__uploads__/goods_photo/{$mid_photos.mid_photo}" alt="{$goodsInfo.goods_name}" width="58" height="58" />
+				</a>
+				</li>
+                {/volist}
+            </ul>
+		</div>
+		<a href="javascript:void(0);" class="spec-next"><i class="iconfont icon-right"></i></a>
+	</div>
+     
+  </div>
+  <!-- 商品相册结束 -->
+
+<!-- 商品价格及购买信息 -->
+<div class="product-wrap">
+<form action="javascript:addToCart(799)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+	<div class="name">{$goodsInfo.goods_name}</div>
+        <div class="summary">
+       	 <div class="summary-price-wrap">
+            <div class="s-p-w-wrap">
+        <div class="summary-item si-shop-price">
+			<div class="si-tit">原 价¥</div>
+			<div class="si-warp">
+			    <strong class="shop-price" id="" ectype="SHOP_PRICE">{$goodsInfo.shop_price}</strong>
+			    <span class="si-tit">会员价</span>
+			    <!-- 本页面中异步获取商品会员价格  ECS_SHOPPRICE -->
+			    <strong class="member-price" id="ECS_SHOPPRICE" ectype="SHOP_PRICE"></strong>
+			</div>
+        </div>
+    	<div class="summary-item si-market-price">
+			<div class="si-tit">市 场 价</div>
+			<div class="si-warp"><div class="m-price" id="ECS_MARKETPRICE"><em>¥</em>{$goodsInfo.markte_price}</div></div>
+        </div>
+        <div class="si-info">
+			<div class="si-cumulative">累计评价<em>0</em></div>
+			<div class="si-cumulative">累计销量<em>0</em></div>
+        </div>
+           
+<!-- 优惠券 -->
+<div class="summary-item si-coupon">
+	<div class="si-tit">领 券</div>
+	<div class="si-warp">
+        <a class="J-open-tb" href="javascript:void" data-goodsid="799">
+        <div class="quan-item"><i class="i-left"></i>满200减10<i class="i-right"></i></div>
+    	</a>
+    </div>
+    </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!-- 积分 -->
+<div class="summary-basic-info">
+    <div class="summary-item is-integral">
+    	<div class="si-tit">可用积分</div>
+    	<div class="si-warp">可用 <span class="integral">0</span></div>
+	</div>
+    <!-- 单选属性开始 -->
+	{volist name="radioAttrArr" id="radioAttr"}
+    <div class="summary-item is-integral">
+    	<div class="si-tit"><?php echo $radioAttr[0]['attr_name'];?></div>
+    	<div class="si-warp">
+			<!-- <label class="radiocheck"><input checked="checked" type="radio" name="color" value="黑色">黑色<i></i></label> -->
+			{volist name="radioAttr" id="attr_value"}
+			<label {if condition="$i eq 1"} class="radiocheck" {/if}>
+				<input type="radio" name="attr_{$attr_value.attr_id}" value="{$attr_value.id}"
+				{if condition="$i eq 1"} checked="checked"{/if}>
+				{$attr_value.attr_value}{if condition="$attr_value.attr_price gt 0"}[加{$attr_value.attr_price}元]{/if}<i></i>
+			</label>
+			{/volist}
+    	</div>
+		</div>
+	{/volist}
+    <!-- 单选属性结束 -->
+</div>
+
+<div class="summary-item is-number">
+    <div class="si-tit">数量</div>
+    <div class="si-warp">
+		<div class="amount-warp">
+		    <input class="text buy-num" ectype="quantity" value="1" name="number" defaultnumber="1">
+		    <div class="a-btn">
+		        <a href="javascript:void(0);" class="btn-add" ectype="btnAdd"><i class="iconfont icon-up"></i></a>
+		        <a href="javascript:void(0);" class="btn-reduce btn-disabled" ectype="btnReduce"><i class="iconfont icon-down"></i></a>
+		        <input type="hidden" name="perNumber" id="perNumber" ectype="perNumber" value="0">
+		        <input type="hidden" name="perMinNumber" id="perMinNumber" ectype="perMinNumber" value="1">
+		    </div>
+		    <input name="confirm_type" id="confirm_type" type="hidden" value="3" />
+		</div>
+		<span>库存&nbsp;<em id="goods_attr_num" ectype="goods_attr_num"></em>&nbsp;个</span>
+		    </div>
+		</div>
+		    <div class="clear"></div>
+		</div>
+
+     <div class="choose-btns ml60 clearfix">
+        <a href="javascript:bool=0;addToCart({$goodsInfo.id})" data-type="0" class="btn-buynow" ectype="btn-buynow">立即购买</a>
+    	<a href="javascript:bool=0;addToCartShowDiv({$goodsInfo.id});" class="btn-append" ectype="btn-append"><i class="iconfont icon-carts"></i>加入购物车</a>
+    </div>
+    <div class="summary-basic-info">
+            <div class="summary-item is-service">
+                <div class="si-tit">温馨提示</div>
+                <div class="si-warp gray">·不支持退换货服务</div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="62" id="user_id" name="user_id" />
+    <input type="hidden" value="799" id="good_id" name="good_id" />
+    <input type="hidden" value="2" id="region_id" name="region_id" />
+    <input type="hidden" value="16" id="area_id" name="area_id" />
+    <input type="hidden" value="0" name="street_list" />
+    <input type="hidden" value="0" name="restrictShop" ectype="restrictShop" />
+    <input type="hidden" value="1" name="add_shop_price" ectype="add_shop_price" />
+</form>
+	</div>
+
+<!-- 商品价格及购买信息结束 -->
+
+<div class="track">
+<div class="track_warp">
+	<div class="track-tit"><h3>看了又看</h3><span></span></div>
+    <div class="track-con" style="height:450px;">
+        <ul>
+        	{volist name="hotGoodsRes" id="hotGoods"}
+    		<li>
+                <div class="p-img">
+                <a href="{:url('index/Goods/index',array('id'=>$hotGoods['id']))}" target="_blank" title="{$hotGoods.goods_name}">
+                	<img src="__uploads__/goods_thumb/{$hotGoods.og_thumb}" width="140" height="140">
+            	</a>
+                </div>
+                <div class="p-name"><a href="{:url('index/Goods/index',array('id'=>$hotGoods['id']))}" target="_blank" title="{$hotGoods.goods_name}">{$hotGoods.goods_name}</a></div>
+                <div class="price">
+    			<em>¥</em>{$hotGoods.markte_price}				
+                </div>
+            </li>
+   			{/volist}
+		</ul>
+    </div>
+    <div class="track-more">
+        <a href="javascript:void(0);" class="sprite-up"><i class="iconfont icon-up"></i></a>
+        <a href="javascript:void(0);" class="sprite-down"><i class="iconfont icon-down"></i></a>
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+            
+<!-- 左侧推荐热销 商品 -->
+<div class="goods-main-layout">
+	<div class="g-m-left">				
+		<div class="g-main g-rank">
+   		 <div class="mc">
+	        <ul class="mc-tab" ectype="rankMcTab">
+	        	<li class="curr">新品</li>            
+	        	<li>推荐</li>                
+	         </ul>
+	<div class="mc-content">               
+            
+	<div class="mc-main" style="display:block;">
+		<div class="mcm-left">
+			<div class="spirit"></div>
+					<div class="rank-number rank-number1">1</div>
+					<div class="rank-number rank-number2">2</div>
+					<div class="rank-number rank-number3">3</div>
+					<div class="rank-number rank-number3">4</div>
+				</div>
+		<div class="mcm-right">
+		<ul>
+			{volist name="hotGoodsRes" id="hotGoods"}
+			<li>
+				<div class="p-img"><a href="{:url('index/Goods/index',array('id'=>$hotGoods['id']))}" title="{$hotGoods.goods_name}"><img src="__uploads__/goods_thumb/{$hotGoods.og_thumb}" width="130" height="130"></a></div>
+				<div class="p-name"><a href="{:url('index/Goods/index',array('id'=>$hotGoods['id']))}" title="{$hotGoods.goods_name}">{$hotGoods.goods_name}</a></div>
+				<div class="p-price">
+					<em>¥</em>{$hotGoods.markte_price}		
+				</div>
+			</li>
+			{/volist}
+		</ul>
+		</div>
+	</div>
+        </div>
+    </div>
+</div></div>
+<!-- 商品详情、评论标题开始 -->
+<div class="g-m-detail">
+	<div class="gm-tabbox" ectype="gm-tabs">
+	<ul class="gm-tab">
+        <li class="curr" ectype="gm-tab-item">商品详情</li>
+         <li ectype="gm-tab-item">用户评论（<em class="ReviewsCount">0</em>）</li>
+    </ul>
+    <div class="gm-tab-qp-bort" ectype="qp-bort"></div>
+</div>
+<!-- 商品详情、评论标题结束 -->
+<div class="gm-floors" ectype="gm-floors">
+	<!-- 商品详情唯一属性开始 -->
+    <div class="gm-f-item gm-f-details" ectype="gm-item">
+        <div class="gm-title">
+            <h3>商品详情</h3>
+        </div>
+        <div class="goods-para-list">
+            <dl class="goods-para">
+                {volist name="uniAttrArr" id="uniAttr"}
+       		    <dd class="column"><span>{$uniAttr.attr_name}：{$uniAttr.attr_value}</span></dd>
+				{/volist}
+       		</dl>  
+    	</div>
+     </div>
+     <!-- 商品详情唯一属性结束-->
+    <div class="gm-f-item gm-f-comment" ectype="gm-item">
+        <div class="gm-title">
+            <h3>评论晒单</h3>
+	        <ul class="gm-f-tab" ectype="gmf-tab">
+				<li class="curr" rev="0"><a href="javascript:;">全部<em>(0)</em></a></li>
+				<li rev="1"><a href="javascript:;">好评<em>(0)</em></a></li>
+				<li rev="2"><a href="javascript:;">中评<em>(0)</em></a></li>
+				<li rev="3" class="last"><a href="javascript:;">差评<em>(0)</em></a></li>
+			</ul>        
+		</div>
+        <div class="gm-warp">
+            <div class="praise-rate-warp">
+                <div class="rate">
+					<strong>100</strong>
+					<span class="rate-span">
+					<span class="tit">好评率</span>
+					<span class="bf">%</span>
+					</span>
+                </div>
+                <div class="actor-new">
+					<div class="not_impression">此商品还没有设置买家印象，陪我一起等下嘛~</div>
+                </div>
+            </div>
+            <div class="com-list-main">
+            
+		<div id="ECS_COMMENT"> <div class="no_records no_comments_qt">
+		    <i class="no_icon no_icon_three"></i>
+		    <span class="block">暂无评价</span>
+		</div>
+</div>   
+          </div>
+       </div>
+    </div>
+</div>
+     </div>
+    <div class="clear"></div>
+<!-- 猜你喜欢 -->
+{include file="common/guess_like"}
+<!-- 猜你喜欢结束 -->
+
+{include file="common/footer"}
+<script type="text/javascript" src="__index__/js/suggest.js"></script>
+<script type="text/javascript" src="__index__/js/scroll_city.js"></script>
+<script type="text/javascript" src="__index__/js/utils.js"></script>
+<script type="text/javascript" src="__index__/js/warehouse.js"></script>
+<script type="text/javascript" src="__index__/js/warehouse_area.js"></script>
+<script type="text/javascript" src="__index__/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="__index__/js/jquery.yomi.js"></script>
+<script type="text/javascript" src="__index__/js/common.js"></script>
+<script type="text/javascript" src="__index__/js/compare.js"></script>
+<script type="text/javascript" src="__index__/js/cart_common.js"></script>
+<script type="text/javascript" src="__index__/js/magiczoomplus.js"></script>
+<script type="text/javascript" src="__index__/js/cart_quick_links.js"></script>
+<script type="text/javascript" src="__index__/js/calendar.php?lang="></script>
+<script type="text/javascript" src="__index__/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="__index__/js/dsc-common.js"></script>
+<script type="text/javascript" src="__index__/js/jquery.purebox.js"></script>
+<script type="text/javascript" src="__index__/js/goodsFittings.js"></script>
+<script type="text/javascript">
+      //获取当前商品的会员价格
+      var goods_id = {$goodsInfo.id};
+      $.ajax({
+      	type: "POST",
+      	url: "{:url('index/Goods/ajaxGetMemberPrice')}",
+      	dataType: 'json',
+      	data: {goods_id:goods_id},
+      	success:function(data){
+      		$("#ECS_SHOPPRICE").html('<em>¥</em>'+data);
+      	}
+      });
+    //单选属性的选中及其兄弟元素的去除选中 
+	$(".si-warp label").click(function(){
+		$(this).addClass('radiocheck').siblings().removeClass('radiocheck');
+		$(this).children('input').attr('checked',true);
+		$(this).siblings().children('input').attr('checked',false);
+		// return false;  //去掉，添加购物车属性会出错
+	});
+    </script>
+	<script type="text/javascript">
+	//商品详情
+	goods_desc_floor();
+	
+	//商品相册小图滚动
+	$(".spec-list").slide({mainCell:".spec-items ul",effect:"left",trigger:"click",pnLoop:false,autoPage:true,scroll:1,vis:5,prevCell:".spec-prev",nextCell:".spec-next"});
+	
+	//右侧看了又看上下滚动
+	$(".track_warp").slide({mainCell:".track-con ul",effect:"top",pnLoop:false,autoPlay:false,autoPage:true,prevCell:".sprite-up",nextCell:".sprite-down",vis:3});
+	
+	//商品搭配切换
+	$(".combo-inner").slide({titCell:".tab-nav li",mainCell:".tab-content",titOnClassName:"curr",trigger:"click"});
+	
+	//商品搭配 多个商品滚动切换
+	$(".combo-items").slide({mainCell:".combo-items-warp ul",effect:"left",pnLoop:false,autoPlay:false,autoPage:true,prevCell:".o-prev",nextCell:".o-next",vis:4});
+	
+	//左侧新品 热销 推荐排行切换
+	$(".g-rank").slide({titCell:".mc-tab li",mainCell:".mc-content",titOnClassName:"curr",trigger:"click"});
+	
+		
+	//全局变量
+	var seller_id = 0;
+	var goods_id = 799;
+	var goodsId = 799;
+	var goodsattr_style = 1;
+	var gmt_end_time = 0;
+	var now_time = 1507503012;
+	var isReturn = false;
+	$(function(){
+		
+		if(seller_id > 0){
+			goods_collect_store(seller_id);
+		}
+		
+		//对比默认加载
+		Compare.init();
+	});
+	
+	/******************************************* js方法 start***********************************************/
+	
+	var add_shop_price = $("*[ectype='add_shop_price']").val();
+	
+	/* 点击可选属性或改变数量时修改商品价格的函数 */
+	function changePrice(onload){
+		var qty = $("*[ectype='quantity']").val();
+		var goods_attr_id = '';
+		var goods_attr = '';
+		var attr_id = '';
+		var attr = '';
+		
+		goods_attr_id = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+		
+		if(onload != 'onload'){
+			if(add_shop_price == 0){
+				attr_id = getSelectedAttributesGroup(document.forms['ECS_FORMBUY']);
+				goods_attr = '&goods_attr=' + attr_id;
+			}
+			Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + goods_attr_id + goods_attr + '&number=' + qty + '&warehouse_id=' + 2 + '&area_id=' + 16, changePriceResponse, 'GET', 'JSON');
+		}else{
+			if(add_shop_price == 1){
+				attr = '&attr=' + goods_attr_id;
+			}
+			Ajax.call('goods.php', 'act=price&id=' + goodsId + attr + '&number=' + qty + '&warehouse_id=' + 2 + '&area_id=' + 16 + '&onload=' + onload, changePriceResponse, 'GET', 'JSON');
+		}
+	}
+	/* 接收返回的信息 回调函数 */
+	function changePriceResponse(res){
+		if(res.err_msg.length > 0){
+			pbDialog(res.err_msg," ",0,450,80,50);
+		}else{
+			//商品条形码
+			if($("#bar_code").length > 0){
+				if(res.bar_code){
+					$("#bar_code").html(res.bar_code);
+					$("#bar_code").parents(".bar_code").removeClass("hide");
+				}else{
+					$("#bar_code").parents(".bar_code").addClass("hide");
+				}
+			}
+			
+			$("#cost-price").html(res.marketPrice_amount);
+			
+			//更新库存
+			if($("*[ectype='goods_attr_num']").length > 0){
+				$("*[ectype='goods_attr_num']").html(res.attr_number);
+				$("*[ectype='perNumber']").val(res.attr_number);
+			}
+			
+			//更新已购买数量
+			if($("#orderG_number").length > 0){
+				$("#orderG_number").html(res.orderG_number);
+			}
+    
+			if($("#ECS_SHOPPRICE").length > 0){
+				//市场价
+				if($("#ECS_MARKETPRICE").length > 0){
+					$("#ECS_MARKETPRICE").html(res.result_market);
+				}
+				
+				//商品价格
+				if(res.onload == 'onload'){
+					$("*[ectype='SHOP_PRICE']").html(res.result);
+				}else{
+					if(add_shop_price == 1){
+$("*[ectype='SHOP_PRICE']").html(res.result);
+					}else{
+if(res.show_goods == 1){
+	$("*[ectype='SHOP_PRICE']").html(res.spec_price);
+}else{
+	$("*[ectype='SHOP_PRICE']").html(res.result);
+}
+					}
+				}
+				
+				//搭配 套餐价
+				var combo_shop = document.getElementsByName('combo_shopPrice[]');
+				var combo_mark = document.getElementsByName('combo_markPrice[]');
+				
+				for(var i=0; i<combo_shop.length; i++){
+					combo_shop[i].innerHTML = res.shop_price;
+				}
+				
+				for(var i=0; i<combo_mark.length; i++){
+					combo_mark[i].innerHTML = res.market_price;
+				}
+			}
+			
+			if(res.err_no == 2){
+				$("#isHas_warehouse_num").html(json_languages.shiping_prompt);
+			}else{
+				var isHas;
+				var is_shipping = Number($("#is_shipping").val());
+				
+				if($("#isHas_warehouse_num").length > 0){
+					if((res.attr_number > 0 || add_shop_price == 0) && (res.attr_number > 0 || res.original_spec_price == res.original_shop_price) && (1 != 0 || is_shipping == 1)){
+$("a[ectype='btn-append']").attr('href','javascript:addToCartShowDiv(799)').removeClass('btn_disabled');
+$("a[ectype='btn-buynow']").attr('href','javascript:addToCart(799)').removeClass('btn_disabled');
+$("a[ectype='byStages']").removeClass('btn_disabled');
+$('a').remove('#quehuo');
+isHas = '<strong>'+json_languages.Have_goods+'</strong>，'+json_languages.Deliver_back_order;
+
+$("a[ectype='btn-buynow']").show();
+$("a[ectype='btn-append']").show();
+$("a[ectype='byStages']").show();
+					}else{
+isHas = '<strong>'+json_languages.No_goods+'</strong>，'+json_languages.goods_over;
+
+$("a[ectype='btn-buynow']").attr('href','javascript:void(0)').addClass('btn_disabled');
+$("a[ectype='btn-append']").attr('href','javascript:void(0)').addClass('btn_disabled');
+$("a[ectype='byStages']").addClass('btn_disabled');
+
+	if(!document.getElementById('quehuo')){
+		if(1 != 0 || is_shipping == 1){
+			$("a[ectype='btn-buynow']").hide();
+			$("a[ectype='btn-append']").hide();
+			$("a[ectype='byStages']").hide();
+			$('.choose-btns').append('<a id="quehuo" class="btn-buynow" href="javascript:addToCart(799);">暂时缺货</a>');
+		}
+	}
+					}
+  
+					if(res.store_type == 1){
+$("[ectype='btn-store-pick']").show();
+$("[ectype='list-store-pick']").show();
+					}else{
+$("[ectype='btn-store-pick']").hide();
+$("[ectype='list-store-pick']").hide();
+					}
+					if(is_shipping == 0){
+isHas = '<strong>'+json_languages.Have_goods+'</strong>，' + json_languages.shiping_prompt;
+					}
+					
+					$("#isHas_warehouse_num").html(isHas);
+				}
+			}
+		
+			if(res.fittings_interval){
+				for(var i=0; i<res.fittings_interval.length; i++){
+					$("#m_goods_" + res.fittings_interval[i].groupId).html(res.fittings_interval[i].fittings_minMax);
+					$("#m_goods_save_" + res.fittings_interval[i].groupId).html(res.fittings_interval[i].save_minMaxPrice);
+					$("#m_goods_reference_" + res.fittings_interval[i].groupId).html(res.fittings_interval[i].market_minMax);
+				}
+			}
+		
+			if(res.onload == 'onload'){
+				$("*[ectype='SHOP_PRICE']").html(res.result);
+			}
+		
+			if(add_shop_price == 1){
+				$(".ECS_fittings_interval").html(res.shop_price);
+			}else{
+				if(res.show_goods == 1){
+					$(".ECS_fittings_interval").html(res.spec_price);
+				}else{
+					$(".ECS_fittings_interval").html(res.shop_price);
+				}
+			}
+			//更新白条分期购每期的价格 start
+			if(res.stages){
+				var i = 0;
+				$.each(res.stages,function(k,v){
+					if(k!=1) {
+$('#chooseStages dd strong').eq(i).html('￥' + v + '×' + k + qi);
+$('#chooseStages dd strong').eq(i).next('span').html(free_desc+'0.00%，￥' + v + '×' + k + qi);
+					}
+					i++;
+				});
+			}
+		}
+		
+		isReturn = true;
+		
+		if(res.onload == "onload"){
+			quantity();
+		}
+	}
+	/******************************************* js方法 end***********************************************/	
+	</script>
+    <script type="text/javascript">
+$(function(){
+	/* 检测配送地区 */
+	seller_shipping_area('0');
+	
+	//配送区域
+	goods_delivery_area();
+});
+
+/* 获取配送区域 start*/
+function goods_delivery_area(){
+	var area = new Object();
+	
+	area.province_id = '3';
+	area.city_id = '37';
+	area.district_id = '410';
+	area.street_id = '0';
+	area.street_list = '0';
+	area.goods_id = '799';
+	area.user_id = '62';
+	area.region_id = '2';
+	area.area_id = '16';
+	area.merchant_id = '0';
+
+	//Ajax.call('ajax_dialog.php?act=goods_delivery_area', 'area=' + $.toJSON(area), goods_delivery_areaResponse, 'POST', 'JSON'); 
+	
+}
+
+function goods_delivery_areaResponse(result){
+	$("#area_address").html(result.content);
+	$(".store-warehouse-info").html(result.warehouse_content);
+	
+	if(result.is_theme == 1){
+		get_user_area_shipping(result.goods_id, result.area.region_id, result.area.province_id, result.area.city_id, result.area.district_id, result.area.street_id, result.area.street_list);
+	}
+}
+/* 获取配送区域 end*/
+
+/* 查询用户所在地区是否支持配送 */
+function get_user_area_shipping(goods_id, region_id, province_id, city_id, district_id, street_id, street_list){
+	
+	var area = new Object();
+	
+	area.goods_id = goods_id;
+	area.region_id = region_id;
+	area.province_id = province_id;
+	area.city_id = city_id;
+	area.district_id = district_id;
+	area.street_id = street_id;
+	area.street_list = street_list;
+	
+	//Ajax.call('ajax_dialog.php?act=user_area_shipping', 'area=' + $.toJSON(area), user_area_shippingResponse, 'POST', 'JSON'); 
+}
+
+function user_area_shippingResponse(result){
+	$("#user_area_shipping").html(result.content);
+	
+	changePrice('onload');
+}
+
+/* 检测配送地区 */
+function seller_shipping_area(merchant_id){
+	//Ajax.call('ajax_dialog.php?act=seller_shipping_area','merchant_id=' + merchant_id, ajaxShippingAreaResponse, 'GET', 'JSON');
+}
+
+function ajaxShippingAreaResponse(result){}
+
+
+/* 配送地区 常用地址选择 start*/
+function get_region_change(goods_id, province_id, city_id, district_id){
+	//Ajax.call("ajax_dialog.php", 'id=' + goods_id + '&act=in_stock' + '&province=' + province_id + "&city=" + city_id + "&district=" + district_id, ajax_is_inStock, "GET", "JSON");
+}
+
+function ajax_is_inStock(res){
+	var t = '&t=' + parseInt(Math.random()*1000);
+	var str_new = window.location.href.replace(/\&t\=\d+/g,t);
+	location.href = str_new;
+}
+/* 配送地区 常用地址选择 end*/
+</script>
+<script type="text/javascript">
+	$(function(){
+		$("*[ectype='replySubmit']").click(function(){
+			var T = $(this);
+			var comment_id = T.data("value");
+			var reply_content = $("#reply_content" + comment_id).val();
+			var user_id = $("#comment_user" + comment_id).val();
+			var goods_id = $("#comment_goods" + comment_id).val();
+			
+			if(reply_content == ''){
+				$("#reply-error" + comment_id).html(json_languages.please_message_input);
+				return false;
+			}
+
+			Ajax.call('comment.php', 'act=comment_reply&comment_id=' + comment_id + '&reply_content=' + reply_content + '&goods_id=' + goods_id + '&user_id=' + user_id, commentReplyResponse, 'POST', 'JSON');
+		});
+		
+		$('.comment_nice').click(function(){
+			var T = $(this);
+			var comment_id = T.data('commentid');
+			var goods_id = T.data('idvalue');
+			var type = 'comment';
+			
+			Ajax.call('comment.php', 'act=add_useful&id=' + comment_id + '&goods_id=' + goods_id + '&type=' + type, niceResponse, 'GET', 'JSON');
+		});
+	});
+	
+	function commentReplyResponse(res){
+		if(res.err_no == 1){
+			var back_url = res.url;
+			$.notLogin("get_ajax_content.php?act=get_login_dialog",back_url);
+			return false;
+		}else if(res.err_no == 2){
+			$("#reply-error" + res.comment_id).html(json_languages.been_evaluated);
+		}else{
+			$("#reply-error" + res.comment_id).html(json_languages.Add_success);
+			$("#reply_content" + res.comment_id).val('');
+			$("#reply-textarea" + res.comment_id).addClass('hide');
+            $(".reply-count").addClass('red');
+		}
+		$(".comment-reply" + res.comment_id).html(res.content);
+		$(".reply-count" + res.comment_id).html(res.reply_count);
+	}
+	
+	function niceResponse(res){
+		if(res.err_no == 1){
+			var back_url = res.url;
+			$.notLogin("get_ajax_content.php?act=get_login_dialog",back_url);
+			return false;
+		}else if(res.err_no == 0){
+			$(".reply-nice" + res.id).html(res.useful);
+            $(".comment_nice").addClass("selected");
+		}
+	}
+</script>
+</body>
+</html>

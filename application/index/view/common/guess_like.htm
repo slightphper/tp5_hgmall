@@ -1,0 +1,17 @@
+<div class="p-panel-main c-history">
+    <div class="ftit ftit-delr"><h3>猜你喜欢</h3></div>
+    <div class="gl-list clearfix">
+        <ul class="clearfix">
+            {volist name="GuessLike" id="Like"}
+            <li class="opacity_img">
+                <div class="p-img"><a href="{:url('index/Goods/index',array('id'=>$Like['id']))}" target="_blank"><img src="__uploads__/goods_thumb/{$Like.og_thumb}" width="190" height="190"></a></div>
+                <div class="p-price"><em>¥</em>{$Like.markte_price}</div>
+                <div class="p-name"><a href="{:url('index/Goods/index',array('id'=>$Like['id']))}" target="_blank">{$Like.goods_name}</a></div>
+                <div class="p-num">已售<em>35</em>件</div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+        </div>
+    </div>
+</div>

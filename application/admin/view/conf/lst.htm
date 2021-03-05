@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+		    <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                     <li>
+                        <a href="{:url('Index/index')}">系统</a>
+                    </li>
+                      <li class="active">配置管理</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加配置" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Conf/add')}'"> <i class="fa fa-plus"></i> 添加配置
+</button>
+<button type="button" tooltip="设置配置项" class="btn btn-sm btn-darkorange btn-addon" onClick="javascript:window.location.href = '{:url('Conf/conflist')}'"> <i class="fa fa-plus"></i> 设置配置项
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <form action="" method="post">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="5%">ID</th>
+                                <th class="text-center">英文名称</th>
+                                <th class="text-center">中文名称</th>
+                                <th class="text-center">表单类型</th>
+                                <th class="text-center">配置类型</th>
+                                <th class="text-center">可选值</th>
+                                <th class="text-center" width="18%">默认值</th>
+                                <th class="text-center" width="8%">排序</th>
+                                <th class="text-center" width="15%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              {volist name="confRes" id="conf"}
+                              <tr>
+                                <td align="center">{$i}</td>
+                                <td align="center">{$conf.ename}</td>
+                                <td align="center">{$conf.cname}</td>
+                                <td align="center">{$conf.form_type}</td>
+                                <td align="center">
+                                {if condition="$conf['conf_type'] eq 1"}网站配置
+                                {else /}文件配置
+                                {/if}
+                                </td>
+                                <td align="center">
+                                {if condition="$conf['values'] neq ''"}
+                                {$conf.values}
+                                {else/}无{/if}
+                                </td>
+                                <td align="center">
+                                {if condition="$conf['form_type'] eq 'file'"}
+                                <img src="__uploads__/conf/{$conf.value}" height="30" >
+                                {elseif condition="$conf['value'] neq ''"/}{$conf.value}
+                                {else/}暂无默认值
+                                {/if}
+                                </td>
+                                <td align="center">
+                                    <input type="text" style="width:50px;text-align:center;" name="{$conf.id}" value="{$conf.sort}">
+                                </td>
+                                <td align="center">
+                                    <a href="{:url('Conf/edit',array('id'=>$conf['id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('Conf/del',array(
+                                    'id'=>$conf['id']))}')" class="btn btn-danger btn-sm shiny" {if condition="$i lt 20"} disabled="disabled"{/if}> 
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            {/volist}   
+                              <tr><td colspan="9" align="right" style="padding-right:17%"><input class="btn btn-primary btn-sm shiny" type="submit" value="提交"></td></tr>  
+                      </tbody>
+                    </table>
+                    </form>
+                    <div style="padding-top:10px;text-align:right;">
+                    {$confRes->render()}
+                    </div>
+                </div>
+                <div>
+                                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    
+
+
+</body></html>

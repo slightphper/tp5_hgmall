@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>嗨购驿站--后台管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+<!-- 头部 -->
+{include file="common/top"}
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+	<div class="page-container">
+	   <!-- Page Sidebar -->
+        {include file="common/left"}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li class="active">控制面板</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+            <div class="page-body">
+    			<div style="text-align:center; line-height:100%; font-size:24px;">
+                    B2C商城项目<hr />
+                </div>
+            <!-- 后台总览 -->
+             <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="popoverexample">
+                        <div class="popover">
+                            <div class="arrow"></div>
+                            <h4 class="popover-title bordered-blueberry">
+                            <a href="{:url('Order/lst')}">
+                                 <i class="menu-icon fa fa-book"></i>&nbsp;&nbsp;订单详情</h4>
+                            </a>
+                            <div class="popover-content">
+                                <p>共有 {$OrderAll} 个订单！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="popoverexample">
+                        <div class="popover">
+                            <div class="arrow"></div>
+                            <h4 class="popover-title bordered-blueberry">
+                            <a href="{:url('Goods/lst')}">
+                                <i class="menu-icon fa fa-book"></i>&nbsp;&nbsp;商品详情</h4>
+                            </a>
+                            <div class="popover-content">
+                                <p>共上架 {$GoodsAll} 件商品！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                 <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="popoverexample">
+                        <div class="popover">
+                            <div class="arrow"></div>
+                            <h4 class="popover-title bordered-blueberry">
+                            <a href="{:url('User/lst')}">
+                                <i class="menu-icon fa fa-link"></i>&nbsp;&nbsp;用户管理</h4>
+                            </a>
+                            <div class="popover-content">
+                                <p>共有 {$UserAll} 位用户. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="popoverexample">
+                        <div class="popover bottom">
+                            <div class="arrow"></div>
+                            <h4 class="popover-title bordered-palegreen">管理员</h4>
+
+                            <div class="popover-content">
+                                <p>当前管理员昵称：{$Request.session.useradmin}
+                                <p>登录时间：{$Request.server.REQUEST_TIME|date="Y-m-d H:i:s",###}</p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="popoverexample">
+                        <div class="popover bottom">
+                            <div class="arrow"></div>
+                            <h4 class="popover-title bordered-palegreen">当前系统版本为：</h4>
+
+                            <div class="popover-content">
+                                <p>{$Request.server.SERVER_SOFTWARE}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="popoverexample">
+                        <div class="popover bottom">
+                            <div class="arrow"></div>
+                            <h4 class="popover-title bordered-palegreen">商城版本</h4>
+
+                            <div class="popover-content">
+                                <p>1.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+	</div>	
+</div>
+
+<!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__admin__/style/beyond.js"></script>
+</body>
+</html>
